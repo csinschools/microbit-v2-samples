@@ -71,9 +71,13 @@ API documentation is embedded in the code using doxygen. We will produce integra
 
 # Additional Notes on developing and building on Windows
 ## Compiling
+DO NOT USE YOTTA!
+
 Install WSL (ubuntu) and enter into command line via "Ubuntu on Windows"
 
-Install prerequisites first (see installation above) within prompt
+Install prerequisites first (see installation above) withint Ubuntu
+
+Within "Ubunto on Windows" shell prompt:
 ```
 python build.py
 ```
@@ -94,6 +98,10 @@ To debug print, I used the resolved library call (not debug macro):
 ```
 codal_dmesg_with_flush( "MicroBitThermometer::updateSample, temperature= %d", (int) temperature);
 ```
+
+To view debug output, install Tera Term VT, use Serial connection (COM3), with baud rate 115200
+
+Run Debugger via Visual Studio Code on windows mount (per instructions above. remember to first install the `marus25.cortex-debug` VS Code extension.)
 
 ## Developing
 codal.json configuration files don't seem to be picked up during build, manually edit the MicroBitConfig.h and add in the DEFINEs yourself
