@@ -72,6 +72,7 @@ API documentation is embedded in the code using doxygen. We will produce integra
 # Additional Notes on developing and building on Windows
 ## Compiling
 Install WSL (ubuntu) and enter into command line via "Ubuntu on Windows"
+
 Install prerequisites first (see installation above) within prompt
 ```
 python build.py
@@ -80,12 +81,15 @@ To build and generate .hex file
 
 ## Debugging
 Per debugging notes above
-Install pyocd on windows mount (not ubunt WSL)
+
+Install pyocd on windows mount (not ubuntu WSL)
+
 Open windows cmd line
 ```
 pyocd gdbserver
 ```
 to start the gdbserver on the windows mount
+
 To debug print, I used the resolved library call (not debug macro):
 ```
 codal_dmesg_with_flush( "MicroBitThermometer::updateSample, temperature= %d", (int) temperature);
