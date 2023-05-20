@@ -68,3 +68,33 @@ This repository is designed to follow the principles and APIs developed for the 
 
 # Documentation
 API documentation is embedded in the code using doxygen. We will produce integrated web-based documentation soon.
+
+# Additional Notes on developing and building on Windows
+## Compiling
+Install WSL (ubuntu) and enter into command line via "Ubuntu on Windows"
+Install prerequisites first (see installation above) within prompt
+```
+python build.py
+```
+To build and generate .hex file
+
+## Debugging
+Per debugging notes above
+Install pyocd on windows mount (not ubunt WSL)
+Open windows cmd line
+```
+pyocd gdbserver
+```
+to start the gdbserver on the windows mount
+To debug print, I used the resolved library call (not debug macro):
+```
+codal_dmesg_with_flush( "MicroBitThermometer::updateSample, temperature= %d", (int) temperature);
+```
+
+## Developing
+codal.json configuration files don't seem to be picked up during build, manually edit the MicroBitConfig.h and add in the DEFINEs yourself
+
+
+
+
+
