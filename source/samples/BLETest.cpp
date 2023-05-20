@@ -33,11 +33,13 @@ MicroBitUARTService *uart;
 // we use events abd the 'connected' variable to keep track of the status of the Bluetooth connection
 static void onConnected(MicroBitEvent)
 {
+    codal_dmesg_with_flush( "Connected!");
     uBit.display.print("C");
 }
 
 static void onDisconnected(MicroBitEvent)
 {
+    codal_dmesg_with_flush( "Disconnected!");
     uBit.display.print("D");
 }
 
@@ -72,10 +74,10 @@ void ble_test()
     // SECURITY_MODE_ENCRYPTION_OPEN_LINK, pairing is no required
     //
 
-    uBit.messageBus.listen(MICROBIT_ID_BLE, MICROBIT_BLE_EVT_CONNECTED, onConnected);
-    uBit.messageBus.listen(MICROBIT_ID_BLE, MICROBIT_BLE_EVT_DISCONNECTED, onDisconnected);
+    //uBit.messageBus.listen(MICROBIT_ID_BLE, MICROBIT_BLE_EVT_CONNECTED, onConnected);
+    //uBit.messageBus.listen(MICROBIT_ID_BLE, MICROBIT_BLE_EVT_DISCONNECTED, onDisconnected);
     
-    uBit.messageBus.listen(MICROBIT_ID_BLE_UART, MICROBIT_UART_S_EVT_DELIM_MATCH, onDelim);
+    //uBit.messageBus.listen(MICROBIT_ID_BLE_UART, MICROBIT_UART_S_EVT_DELIM_MATCH, onDelim);
 
     new MicroBitAccelerometerService(*uBit.ble, uBit.accelerometer);
     new MicroBitButtonService(*uBit.ble);
@@ -84,8 +86,8 @@ void ble_test()
     new MicroBitMagnetometerService(*uBit.ble, uBit.compass);
     new MicroBitTemperatureService(*uBit.ble, uBit.thermometer);
 
-    uart = new MicroBitUARTService(*uBit.ble, 32, 32);
-    uart->eventOn("\r\n");
+    //uart = new MicroBitUARTService(*uBit.ble, 32, 32);
+    //uart->eventOn("\r\n");
 
     // A cunning code to indicate during start-up the particular Bluetooth configuration in the build
     //
@@ -107,15 +109,15 @@ void ble_test()
     // N: No Pairing Required
 
     // Services/Pairing Config/Power Level
-    uBit.display.scroll("BLE ABDILMTU/P");
+    //uBit.display.scroll("BLE ABDILMTU/P");
 
-    if ( !uBit.compass.isCalibrated())
-        uBit.compass.calibrate();
+    //if ( !uBit.compass.isCalibrated())
+    //    uBit.compass.calibrate();
 
     // If main exits, there may still be other fibers running or registered event handlers etc.
     // Simply release this fiber, which will mean we enter the scheduler. Worse case, we then
     // sit in the idle task forever, in a power efficient sleep.
-    release_fiber();
+    //release_fiber();
 }
 
 #endif

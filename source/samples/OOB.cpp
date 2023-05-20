@@ -182,7 +182,7 @@ void wake()
     uBit.display.setBrightness(0);
     // Turn on all pixels.
     for(int y=0; y<5; y++) {
-        for(int x=0; x<5; x++) {
+        for(int x=0; x<1; x++) {
             uBit.display.image.setPixelValue(x, y, 255);
         }
     }

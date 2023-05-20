@@ -6,13 +6,18 @@
         "type": "git",
         "test_ignore": true,
         "dev": true
-    },
+    } ,
     "config":{
-        "DEVICE_DMESG": 1,
+        "MICROBIT_BLE_ENABLED" : 1,
+        "MICROBIT_BLE_PAIRING_MODE": 1,
+        "MICROBIT_BLE_DFU_SERVICE": 1,
+        "MICROBIT_BLE_DEVICE_INFORMATION_SERVICE": 1,
+        "MICROBIT_BLE_EVENT_SERVICE" : 1,
+        "MICROBIT_BLE_PARTIAL_FLASHING" : 0,
+        "MICROBIT_BLE_SECURITY_LEVEL": "SECURITY_MODE_ENCRYPTION_OPEN_LINK",
+        "DMESG_ENABLE": 1,
+        "DEVICE_DMESG_BUFFER_SIZE": 1024,
         "DMESG_SERIAL_DEBUG": 1,
-        "CODAL_DEBUG": 1,
-        "MICROBIT_BLE_ENABLED" : 0,
-        "MICROBIT_BLE_PAIRING_MODE": 0,
-        "CONFIG_MICROBIT_ERASE_USER_DATA_ON_REFLASH": 1
+        "CODAL_DEBUG": 1
     }
 }
